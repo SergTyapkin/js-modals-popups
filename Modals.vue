@@ -1,9 +1,41 @@
 <style lang="stylus" scoped>
-@require '~/styles/constants.styl'
-@require '~/styles/buttons.styl'
-@require '~/styles/fonts.styl'
-
 close-btn-size = 20px
+
+colorBg = #303030
+colorText1 = #e7e7e7
+colorText2 = mix(colorText1, black, 90%)
+colorText3 = mix(colorText1, black, 80%)
+colorText4 = mix(colorText1, black, 65%)
+colorText5 = mix(colorText1, black, 50%)
+
+
+button-submit()
+  border-color = #d7d7d7
+  text-color = #dcdcdc
+  bg-color = #333333
+
+  border-color-hover = #ffffff
+  text-color-hover = #ffffff
+
+  color text-color
+  border border-color solid 0px
+  border-radius 999999999px
+  text-shadow none
+  transition all 0.2s ease
+  cursor pointer
+  box-sizing border-box
+  margin auto
+  width 70%
+  padding 10px 20px
+  min-height 40px
+  background bg-color
+  display flex
+  align-items center
+  justify-content center
+
+  &:hover
+    color text-color-hover
+    border-color border-color-hover
 
 .modal
   position fixed
@@ -45,7 +77,6 @@ close-btn-size = 20px
     .close-btn
       position absolute
       color colorText3
-      text-shadow colorText3
       right 20px
       top 10px
       width close-btn-size
@@ -59,11 +90,13 @@ close-btn-size = 20px
 
     .info-container
       .title
-        font-large()
+        line-height 1.2
+        font-size 1.2rem
         color colorText1
         margin-bottom 10px
       .description
-        font-medium()
+        line-height 1.2
+        font-size 1.0rem
         color colorText3
 
     .fields-container
@@ -73,7 +106,8 @@ close-btn-size = 20px
           box-sizing border-box
           width 100%
           padding 5px 15px
-          font-large()
+          line-height 1.2
+          font-size 1.2rem
           color colorText1
           border 2px solid colorText1
           border-radius 99999999px
@@ -83,6 +117,8 @@ close-btn-size = 20px
         display flex
         gap 20px
       .confirm-button
+        line-height 1.2
+        font-size 1.2rem
         button-submit()
         margin-top 20px
         width 50%
