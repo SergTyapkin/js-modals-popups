@@ -1,6 +1,6 @@
 # Modals and Popups Vue.js components
 ![Static Badge](https://img.shields.io/badge/Vue.js-components-green)
-![npm](https://img.shields.io/npm/dt/%40sergtyapkin%2Frest-api)
+![npm](https://img.shields.io/npm/dt/%40sergtyapkin%2Fmodals-popups)
 
 Modals and popups components for your Vue.js app
 
