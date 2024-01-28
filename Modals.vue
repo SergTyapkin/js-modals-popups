@@ -1,7 +1,7 @@
 <style lang="stylus" scoped>
-@require '../../../styles/constants.styl'
-@require '../../../styles/buttons.styl'
-@require '../../../styles/fonts.styl'
+@require '~/styles/constants.styl'
+@require '~/styles/buttons.styl'
+@require '~/styles/fonts.styl'
 
 close-btn-size = 20px
 
