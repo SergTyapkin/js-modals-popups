@@ -144,7 +144,7 @@ button-submit()
 
       <div class="fields-container">
         <div v-if="type === Types.prompt" class="form-group">
-          <input type="text" v-model="text" ref="inputText" class="input" :placeholder="placeholder">
+          <input type="text" v-model="text" ref="inputText" class="input" :placeholder="placeholder" id="__modals-input-prompt">
         </div>
       </div>
 
