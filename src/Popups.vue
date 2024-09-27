@@ -57,7 +57,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
   const DEFAULT_DISSAPPEAR_AFTER_MS = 3000;
   const DEFAULT_TRANSITION_OPACITY_TIME_MS = 500;
   const DEFAULT_TRANSITION_HEIGHT_TIME_MS = 300;
@@ -70,7 +70,7 @@
     },
 
     methods: {
-      async __addMessage(title, message, cls, disappearTime) {
+      async __addMessage(title: string, message: string, cls: string, disappearTimeMs: number) {
         const el = document.createElement('div');
         el.classList.add('popup-message', cls);
         el.innerHTML = `<div class="title"><strong>${title}</strong></div>
@@ -87,19 +87,19 @@
               el.remove();
             }, DEFAULT_TRANSITION_HEIGHT_TIME_MS);
           }, DEFAULT_TRANSITION_OPACITY_TIME_MS);
-        }, disappearTime);
+        }, disappearTimeMs);
       },
 
-      success(title, message = '', time = DEFAULT_DISSAPPEAR_AFTER_MS) {
-        this.__addMessage(title, message, 'success', time);
+      success(title: string, message: string = '', timeMs: number = DEFAULT_DISSAPPEAR_AFTER_MS) {
+        this.__addMessage(title, message, 'success', timeMs);
       },
 
-      alert(title, message = '', time = DEFAULT_DISSAPPEAR_AFTER_MS) {
-        this.__addMessage(title, message, 'alert', time);
+      alert(title: string, message: string = '', timeMs: number = DEFAULT_DISSAPPEAR_AFTER_MS) {
+        this.__addMessage(title, message, 'alert', timeMs);
       },
 
-      error(title, message = '', time = DEFAULT_DISSAPPEAR_AFTER_MS) {
-        this.__addMessage(title, message, 'error', time);
+      error(title: string, message: string = '', timeMs: number = DEFAULT_DISSAPPEAR_AFTER_MS) {
+        this.__addMessage(title, message, 'error', timeMs);
       }
     }
   }

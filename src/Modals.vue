@@ -161,7 +161,7 @@ button-submit()
   </div>
 </template>
 
-<script>
+<script lang="ts">
   export default {
     data() {
       return {
@@ -185,7 +185,7 @@ button-submit()
     },
 
     methods: {
-      async __createModal(title, description = '', placeholder='', type='alert') {
+      async __createModal(title: string, description: string = '', placeholder: string = '', type: number = 2): Promise<boolean | null | string> {
         this.type = type;
         this.title = title;
         this.description = description;
@@ -211,9 +211,9 @@ button-submit()
         });
         this.promise = promise;
 
-        return promise;
+        return promise as Promise<boolean | null | string>;
       },
-      __resolve(result) {
+      __resolve(result?: boolean | null | string) {
         if (!this.isShowed) {
           return;
         }
@@ -231,15 +231,15 @@ button-submit()
         this.text = '';
       },
 
-      prompt(title, description, defaultText, placeholder) {
+      prompt(title: string, description: string, defaultText: string = '', placeholder: string = ''): Promise<null | string> {
         this.text = defaultText;
-        return this.__createModal(title, description, placeholder, this.Types.prompt);
+        return this.__createModal(title, description, placeholder, this.Types.prompt) as Promise<null | string>;
       },
-      confirm(title, description) {
-        return this.__createModal(title, description, '', this.Types.confirm);
+      confirm(title: string, description: string = ''): Promise<boolean | null> {
+        return this.__createModal(title, description, '', this.Types.confirm) as Promise<boolean | null>;
       },
-      alert(title, description) {
-        return this.__createModal(title, description, '', this.Types.alert);
+      alert(title: string, description: string = ''): Promise<boolean | null> {
+        return this.__createModal(title, description, '', this.Types.alert) as Promise<boolean | null>;
       },
     }
   }
