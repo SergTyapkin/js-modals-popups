@@ -202,11 +202,17 @@ button-submit()
         await this.$nextTick();
 
         if (this.type === this.Types.confirm) {
-          this.$refs.buttonYes.focus();
+          if (this.$refs.buttonYes) {
+            this.$refs.buttonYes.focus();
+          }
         } else if (this.type === this.Types.prompt) {
-          this.$refs.inputText.focus();
+          if (this.$refs.inputText) {
+            this.$refs.inputText.focus();
+          }
         } else {
-          this.$refs.buttonOk.focus();
+          if (this.$refs.buttonOk) {
+            this.$refs.buttonOk.focus();
+          }
         }
         this.$refs.form.scrollTop = 0;
 
