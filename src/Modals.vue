@@ -57,15 +57,17 @@ button-submit()
     background-color black
     opacity 0.6
   .form
-    position relative
-    margin 150px auto
+    position fixed
+    top 50%
+    left 50%
+    transform translate(-50%, -50%)
+    width calc(100% - 40px)
     max-width 600px
     background colorBg
     padding 20px
     border-radius 10px
-    @media (max-width: 600px)
-      margin-left 10px
-      margin-right 10px
+    overflow auto
+    max-height calc(100vh - 40px)
 
     .confirm-button
       width 45%
@@ -89,6 +91,7 @@ button-submit()
       transform scale(1.1)
 
     .info-container
+      white-space pre-wrap
       .title
         line-height 1.2
         font-size 1.2rem
@@ -129,11 +132,11 @@ button-submit()
 </style>
 
 <template>
-  <div class="modal" :class="{hidden: !isShowed}" @keydown.enter.prevent="__resolve(true)" @keydown.esc="__resolve(false)">
-    <div class="modal-background" @click="__resolve(false)"></div>
+  <div class="modal" :class="{hidden: !isShowed}" @keydown.enter.prevent="__resolve(true)" @keydown.esc="__resolve(null)">
+    <div class="modal-background" @click="__resolve(null)"></div>
 
     <div class="form" ref="form">
-      <span class="close-btn" @click="__resolve(false)">
+      <span class="close-btn" @click="__resolve(null)">
         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/></svg>
       </span>
 
@@ -205,6 +208,7 @@ button-submit()
         } else {
           this.$refs.buttonOk.focus();
         }
+        this.$refs.form.scrollTop = 0;
 
         const promise = new Promise((resolve) => {
           this.resolvePromise = resolve;
@@ -218,10 +222,8 @@ button-submit()
           return;
         }
 
-        if (this.type !== this.Types.confirm) {
-          if (result === false) {
-            result = null;
-          } else {
+        if (this.type === this.Types.prompt) {
+          if (result) {
             result = this.text;
           }
         }
