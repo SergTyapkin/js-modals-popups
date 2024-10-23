@@ -214,7 +214,9 @@ button-submit()
             this.$refs.buttonOk.focus();
           }
         }
-        this.$refs.form.scrollTop = 0;
+        if (this.$refs.form) {
+          this.$refs.form.scrollTop = 0;
+        }
 
         const promise = new Promise((resolve) => {
           this.resolvePromise = resolve;
